@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     {
         var horizontalInput = Input.GetAxis("Horizontal");
 
-        if (rb.velocity.magnitude <= 3f);
+        if (rb.velocity.magnitude <= 3f)
         {
             rb.AddForce(new Vector3(horizontalInput * forceMultiplier, 0, 0));
         }
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Hazard"))
+        if (collision.gameObject.CompareTag("Crate"))
         {
             Destroy(gameObject);
         }

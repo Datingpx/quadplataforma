@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject hazardPrefab;
+    public GameObject CratePrefab;
 
-    public int maxHazardsToSpawn = 3;
+    public int maxCratesToSpawn = 4;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnHazards());
+        StartCoroutine(SpawnCrates());
     }
-    private IEnumerator SpawnHazards()
+    private IEnumerator SpawnCrates()
     {
-        var hazardsToSpawn = Random.Range(1, maxHazardsToSpawn);
+        var hazardsToSpawn = Random.Range(1, maxCratesToSpawn);
 
         for (int i = 0; i < hazardsToSpawn; i++)
         {
             var x = Random.Range(-7, 7);
             var drag = Random.Range(0f, 2f);
-            var hazard = Instantiate(hazardPrefab, new Vector3(x, 11, 0), Quaternion.identity);
+            var hazard = Instantiate(CratePrefab, new Vector3(x, 11, 0), Quaternion.identity);
             hazard.GetComponent<Rigidbody>().drag = drag;
         }
 
         yield return new WaitForSeconds(1f);
 
-        yield return SpawnHazards();
+        yield return SpawnCrates();
     }
 
 }
